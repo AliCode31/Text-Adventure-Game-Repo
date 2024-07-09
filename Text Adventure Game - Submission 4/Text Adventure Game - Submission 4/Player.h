@@ -1,7 +1,7 @@
 #include "String.h"
 #include "Vocation.h"
 #pragma once
-class Player : public Vocation
+class Player
 {
 public:
 	String* vocationName;

@@ -5,11 +5,13 @@
 int main()
 {
   
-	Player* player = new Player();
-
+	Player player;
 
 
 	
+	player.playerVocation->ChooseVocation();
+
+	player.SetVocation();
 
 
 
@@ -19,10 +21,7 @@ int main()
 
 
 
-
-
-
-
+	system("pause");
 
 
 

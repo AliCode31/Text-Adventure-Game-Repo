@@ -2,17 +2,18 @@
 #pragma once
 class Vocation
 {
-protected:
 
-	String* vocationName;
+public:
 
-	int* health;
-	int* defense;
-	int* magicAttack;
+	String vocationName;
 
-	int* attack;
-	int* stamina;
-	int* mana;
+	int health;
+	int defense;
+	int magicAttack;
+
+	int attack;
+	int stamina;
+	int mana;
 
 public:
 
