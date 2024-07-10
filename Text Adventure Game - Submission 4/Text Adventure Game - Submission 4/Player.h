@@ -4,19 +4,22 @@
 class Player
 {
 public:
+	String playerName;
+
+
+
 	String* vocationName;
 	Vocation* playerVocation;
 
-
 private:
-	int* health;
-	int* defense;
+	int health;
+	int defense;
 
-	int* attack;
-	int* magicAttack;
+	int attack;
+	int magicAttack;
 
-	int* stamina;
-	int* mana;
+	int stamina;
+	int mana;
 
 public: 
 
@@ -27,7 +30,7 @@ public:
 public:
 
 	void SetVocation();
-
+	void ChooseName();
 
      
 

@@ -1,23 +1,24 @@
 #include "Player.h"
 #include "Vocation.h"
+#include <iostream>
 Player::Player() 
 {
-
+	playerName = "You";
 	
 	
 	playerVocation = new Vocation;
 
-	vocationName = new String();
+	vocationName = nullptr;
 
-	health	= new int(10);
+	health	= 10;
 
-	defense = new int(19);
+	defense = 10;
 
-	attack = new int(10);
-	magicAttack = new int(10);
+	attack = 10;
+	magicAttack = 10;
 
-	stamina = new int(10);
-	mana = new int(10);
+	stamina = 10;
+	mana = 10;
 
 
 	
@@ -28,32 +29,67 @@ Player::Player()
 
 Player::~Player()
 {
-	delete[] vocationName;
+	
 	delete playerVocation;
 
-	delete health;
-	delete defense;
 
-	delete attack;
-	delete magicAttack;
-
-	delete stamina;
-	delete mana;
-
+	
 	
 }
 
 void Player::SetVocation()
 {
-	vocationName = new String(playerVocation->vocationName);
+	vocationName = &playerVocation->vocationName;
 
-	health = new int(playerVocation->health);
+	health = playerVocation->health;
 
-	defense = new int(playerVocation->defense);
+	defense = playerVocation->defense;
 
-	attack = new int(playerVocation->attack);
-	magicAttack = new int(playerVocation->magicAttack);
+	attack = playerVocation->attack;
+	magicAttack = playerVocation->magicAttack;
 
-	stamina = new int(playerVocation->stamina);
-	mana = new int(playerVocation->mana);
+	stamina = playerVocation->stamina;
+	mana = playerVocation->mana;
+}
+
+void Player::ChooseName()
+{
+	String bufferName = "";
+	String bufferYesNo = "";
+	bool areYouSure = true;
+	bool typingname = true;
+	String consoleYesAndNO;
+	String consoleName;
+
+	while (typingname) {
+
+		
+		std::cout << "WHAT IS YOUR NAME!!!!\n";
+		consoleName.ReadFromConsole();
+
+		
+		areYouSure = true;
+		while (areYouSure) {
+			std::cout << "Your name is [" <<consoleName.CString() << "], are you sure?\nY/N\n";
+
+			consoleYesAndNO.ReadFromConsole();
+			bufferName = consoleName;
+			
+			if (consoleYesAndNO.Uppercase() == "Y") {
+				typingname = false;
+				areYouSure = false;
+				playerName = consoleName;
+				bufferYesNo = consoleYesAndNO;
+			}
+			if (consoleYesAndNO.Uppercase() == "N") {
+				areYouSure = false;
+			}
+		}
+
+	}
+
+	consoleName = bufferName;
+	consoleYesAndNO = bufferYesNo;
+	
+
 }

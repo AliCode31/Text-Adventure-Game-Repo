@@ -39,7 +39,7 @@ void Vocation::ChooseVocation()
 
 		consoleVocation.ReadFromConsole();
 
-		if (consoleVocation == paladin) {
+		if (consoleVocation.Uppercase() == paladin) {
 			vocationName = paladin;
 
 			 health = 100;
@@ -50,10 +50,10 @@ void Vocation::ChooseVocation()
 			 attack = 15;
 
 			areYouSure = true;		
-			bufferVocation = consoleVocation;
-			bufferYesNo = consoleYesAndNO;
+			bufferVocation = consoleVocation.Uppercase();
+			bufferYesNo = consoleYesAndNO.Uppercase();
 		}
-		else if (consoleVocation == warrior) {
+		else if (consoleVocation.Uppercase() == warrior) {
 			vocationName = warrior;
 
 			health = 100;
@@ -63,10 +63,10 @@ void Vocation::ChooseVocation()
 			attack = 30;
 
 			areYouSure = true;
-			bufferVocation = consoleVocation;
-			bufferYesNo = consoleYesAndNO;
+			bufferVocation = consoleVocation.Uppercase();
+			bufferYesNo = consoleYesAndNO.Uppercase();
 		}
-		else if (consoleVocation == mage) {
+		else if (consoleVocation.Uppercase() == mage) {
 			vocationName = mage;
 
 			health = 100;
@@ -78,8 +78,8 @@ void Vocation::ChooseVocation()
 
 
 			areYouSure = true;
-			bufferVocation = consoleVocation;
-			bufferYesNo = consoleYesAndNO;
+			bufferVocation = consoleVocation.Uppercase();
+			bufferYesNo = consoleYesAndNO.Uppercase();
 		}
 		else std::cout << "YOU INPUTED THE WRONG KEYWORDS PLEASE TRY AGAIN\n";
 
@@ -88,11 +88,11 @@ void Vocation::ChooseVocation()
 			std::cout << "Y/N\n";
 
 			consoleYesAndNO.ReadFromConsole();
-			if (consoleYesAndNO == "Y") {
+			if (consoleYesAndNO.Uppercase() == "Y") {
 				typingVocation = false;
 				areYouSure = false;
 			}
-			else if (consoleYesAndNO == "N") {
+			else if (consoleYesAndNO.Uppercase() == "N") {
 				areYouSure = false;
 			}
 		}
