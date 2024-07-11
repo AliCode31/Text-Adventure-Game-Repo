@@ -59,7 +59,7 @@ void Vocation::ChooseVocation()
 			health = 100;
 			defense = 80;
 			stamina = 100;
-
+			
 			attack = 30;
 
 			areYouSure = true;
@@ -74,7 +74,7 @@ void Vocation::ChooseVocation()
 			
 			mana = 100;
 
-			magicAttack - 100;
+			magicAttack = 50;
 
 
 			areYouSure = true;

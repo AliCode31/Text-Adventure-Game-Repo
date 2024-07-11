@@ -563,16 +563,17 @@ String& String::Prepend(const String& _str)
 
 bool String::operator==(const String& _other)
 {
-	if (strcmp(str, _other.str) == 0)
+	if (strcmp(str, _other.str) == 0) {
 		return true;
-
-	else return false;
+	}
+	 return false;
 }
 
 bool String::operator!=(const String& _other)
 {
-	if (strcmp(str, _other.str) != 0)
+	if (strcmp(str, _other.str) != 0) {
 		return true;
+	}
 	return false;
 }
 
@@ -584,7 +585,15 @@ bool String::operator<(const String& _other)
 	if (strcmp(str, _other.str) == -1) {
 		return true;
 	}
-	else false;
+	return false;
+}
+
+bool String::operator>(const String& _other)
+{
+	if (strcmp(str, _other.str) == 1) {
+		return true;
+	}
+	return false;
 }
 
 String& String::operator=(const String& _other)

@@ -1,6 +1,7 @@
 #include "Player.h"
 #include "Vocation.h"
 #include <iostream>
+#include <algorithm>
 Player::Player() 
 {
 	playerName = "You";
@@ -23,6 +24,52 @@ Player::Player()
 
 	
 
+
+	spellsLength = 10;
+	for (int i = 0; i < spellsLength; i++) {
+		if (i == 0) {
+			spells[i] = "Swing";
+		}
+
+		if (i == 1) {
+			spells[i] = "Block";
+		}
+
+		if (i == 2) {
+			spells[i] = "Blade of Faith";
+		}
+
+		if (i == 3) {
+			spells[i] = "Blade of Truth";
+		}
+
+		if (i == 4) {
+			spells[i] = "Whirlwind";
+		}
+
+		if (i == 5) {
+			spells[i] = "Bloodlust";
+		}
+
+		if (i == 6) {
+			spells[i] = "Energy Blast";
+		}
+
+		if (i == 7) {
+			spells[i] = "Magic Shield";
+		}
+
+		if (i == 8) {
+			spells[i] = "Heal";
+		}
+
+		if (i == 9) {
+			spells[i] = "Concentrate";
+		}
+
+	}
+	
+	
 
 
 }
@@ -50,6 +97,9 @@ void Player::SetVocation()
 
 	stamina = playerVocation->stamina;
 	mana = playerVocation->mana;
+
+	//Spells
+
 }
 
 void Player::ChooseName()
@@ -91,5 +141,60 @@ void Player::ChooseName()
 	consoleName = bufferName;
 	consoleYesAndNO = bufferYesNo;
 	
+
+}
+
+namespace StringUtility
+{
+	//https://www.geeksforgeeks.org/bubble-sort-algorithm/
+	/*I had to grab this code because the normal array sorter can't sort my string array. because I don't have a sorter in my string utility class.
+	  and if I had a string list I couldn't access[] when doing my binary search*/
+	void BubbleSort(String arr[], int n) {
+		int i, j;
+		bool swapped;
+		for (i = 0; i < n - 1; i++) {
+			swapped = false;
+			for (j = 0; j < n - i - 1; j++) {
+				if (arr[j] > arr[j + 1]) {
+					std::swap(arr[j], arr[j + 1]);
+					swapped = true;
+				}
+			}
+
+			// If no two elements were swapped
+			// by inner loop, then break
+			if (swapped == false)
+				break;
+		}
+	}
+}
+bool Player::FindSpell(String spell)
+{
+	
+	
+
+	int length = sizeof(spells) / sizeof(String);
+	int l = 0;
+	int r = length -1;
+
+	StringUtility::BubbleSort(spells, length);
+
+	while (l <= r)
+	{
+
+		int m = (int)((l + r) / 2);
+
+		if (spells[m] == spell) {
+			return true;
+		}
+		if (spells[m] < spell) {
+			l = m + 1;
+		}
+		if (spells[m] > spell) {
+			r = m - 1;
+		}
+		
+	}
+	return false;
 
 }

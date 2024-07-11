@@ -10,15 +10,28 @@ int main()
 	DialogueManager dialogue(player);
 
 	/*player->ChooseName();*/
-	player->playerVocation->ChooseVocation();
+	//player->playerVocation->ChooseVocation();
 
 	player->SetVocation();
 
 	
-	dialogue.Contiunue();
+
+	
+
+
+	if (player->FindSpell("Heal")) {
+		std::cout << "It has been found";
+	}
+	else std::cout << "You don't have that spell";
+
+
+
+
+
+	/*dialogue.Contiunue();
 	dialogue.Prologue(1);
 	player->ChooseName();
-	dialogue.Prologue(2);
+	dialogue.Prologue(2);*/
 
 
 

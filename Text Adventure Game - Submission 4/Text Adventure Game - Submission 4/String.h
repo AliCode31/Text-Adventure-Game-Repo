@@ -39,11 +39,14 @@ public: //Constructors
 
 	String& Uppercase();
 	String& Lowercase();
+
+	
 public: // Operators
 
 	bool operator ==(const String& _other);
 	bool operator !=(const String& _other);
 	bool operator <(const String& _other);
+	bool operator >(const String& _other);
 
 	String& operator=(const String& _other);
 
@@ -85,3 +88,4 @@ public: //test operators
 	bool TestOperatorSubscript();
 
 };
+
