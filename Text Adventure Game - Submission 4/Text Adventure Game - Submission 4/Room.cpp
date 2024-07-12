@@ -18,7 +18,13 @@ Room::Room(String descript, Item* item)
 	
 
 }
+Room::Room(String descript, Item* item, Item* itemTwo)
+{
+	description = descript;
+	this->item = item;
 
+
+}
 Room::~Room()
 {
 

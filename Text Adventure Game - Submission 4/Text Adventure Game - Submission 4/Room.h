@@ -14,6 +14,7 @@ public:
     Room();
     Room(String descript);
     Room(String descript, Item* item);
+    Room(String descript, Item* item, Item* itemTwo);
 
    ~Room();
 public:

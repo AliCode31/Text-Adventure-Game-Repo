@@ -5,6 +5,7 @@
 #include "ChestKey.h"
 #include "CorridorKey.h"
 #include "Crystal.h"
+#include "Kobold.h"
 class Game
 {
 private: 
@@ -12,6 +13,8 @@ private:
 	ChestKey* chestKey;
 	CorridorKey* corridorKey;
 	Crystal* crystal;
+
+	Kobold* kobold;
 
 	bool gameIsRun;
 
@@ -25,6 +28,7 @@ public:
 public:
 	void Run();
 	void Dungeon();
+	void FightKobold();
 
 };
 

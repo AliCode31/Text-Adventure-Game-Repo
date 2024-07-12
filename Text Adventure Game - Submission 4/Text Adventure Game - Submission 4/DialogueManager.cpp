@@ -298,3 +298,22 @@ void DialogueManager::IntroToDungeon()
 		dialogueNumber++;
 	}
 }
+
+void DialogueManager::AboutToFight()
+{
+	
+ 	String dialogue = "\nYou pull at your {Weapontype}, and charge right at the Kobold";
+	dialogue.Replace("{Weapontype}", weapon); //weapon.Lowercase());
+
+
+
+
+
+
+
+
+
+
+	std::cout << dialogue.CString();
+	Contiunue();
+}

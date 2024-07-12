@@ -116,31 +116,46 @@ void Player::Hud()
 	String warrior = "WARRIOR";
 	String mage = "MAGE";
 
+	
+
 	if (*vocationName == paladin) {
-		std::cout << "-------------------------------------\n";
+		std::cout << "\n-------------------------------------\n";
 		std::cout << "Health:  " << health << "              " << "Attack: " << attack << " " << std::endl;
 		std::cout << "Defense: " << defense << "               " << std::endl;
 		std::cout << "Stamina: " << stamina << "                 Vocation" << std::endl;
 		std::cout << "Mana: " << mana << "                     " << vocationName->CString() << "" << std::endl;
 		std::cout << "-------------------------------------\n";
+
+		std::cout << "Skills:              Spells:        |\n";
+		std::cout << "Swing                Clemency       |\nBlock                Blade of Faith |\n                     Blade of Truth |\n";
+		std::cout << "-------------------------------------\n\n\n";
 	}
 	if (*vocationName == warrior) {
-		std::cout << "-------------------------------------\n";
+		std::cout << "\n-------------------------------------\n";
 		std::cout << "Health:  " << health << "               " << "Attack: " << attack << " " << std::endl;
 		std::cout << "Defense: " << defense << "               " << std::endl;
 		std::cout << "Stamina: " << stamina << "                 Vocation" << std::endl;
 		std::cout << "                              " << vocationName->CString() << "" << std::endl;
 		std::cout << "-------------------------------------\n";
+		std::cout << "Skills:                         |\n";
+		std::cout << "Swing                 Bloodlust |\nBlock                 Whirlwind |\n";
+		std::cout << "---------------------------------\n\n\n";
+
 	}
 	if (*vocationName == mage) {
-		std::cout << "-------------------------------------\n";
+		std::cout << "\n------------------------------------\n";
 		std::cout << "Health:  " << health << "             " << "MAttack: " << magicAttack << " " << std::endl;
 		std::cout << "Defense: " << defense << "               " << std::endl;
-		std::cout << "mana: " << mana << "                    Vocation" << std::endl;
-		std::cout << "                                 " << vocationName->CString() << "" << std::endl;
-		std::cout << "-------------------------------------\n";
+		std::cout << "mana: " << mana << "                   Vocation" << std::endl;
+		std::cout << "                                " << vocationName->CString() << "" << std::endl;
+		std::cout << "------------------------------------\n";
+		std::cout << "Spells:                            |\n";
+		std::cout << "Energy Blast           Concentrate |\nMagic Shield                  Heal |\n";
+		std::cout << "------------------------------------\n\n\n";
 	}
+
 	
+  
 }
 
 void Player::ChooseName()
@@ -209,7 +224,7 @@ namespace StringUtility
 		}
 	}
 }
-bool Player::FindSpell(String spell)
+bool Player::FindSpell(String* spell)
 {
 	
 	
@@ -225,17 +240,74 @@ bool Player::FindSpell(String spell)
 
 		int m = (int)((l + r) / 2);
 
-		if (spells[m] == spell) {
+		if (spells[m] == *spell) {
 			return true;
 		}
-		if (spells[m] < spell) {
+		if (spells[m] < *spell) {
 			l = m + 1;
 		}
-		if (spells[m] > spell) {
+		if (spells[m] > *spell) {
 			r = m - 1;
 		}
 		
 	}
 	return false;
 
+}
+
+int Player::CastSpell(String castSpells)
+{
+	if (FindSpell(&castSpells)) {
+
+		if (*vocationName == "PALADIN") {
+
+			if (castSpells == "Swing") {
+				std::cout << "You swing your sword";
+				return attack;
+			}
+
+			if (castSpells == "Block") {
+				std::cout << "You raise your shield getting ready to block";
+				defense = 200;
+				return defense;
+			}
+		}
+			if (*vocationName == "WARRIOR") {
+
+				if (castSpells == "Swing") {
+					std::cout << "You swing your Axe";
+					return attack;
+				}
+
+				if (castSpells == "block") {
+					std::cout << "You block with your axe";
+					defense = 200;
+					return defense;
+				}
+			}
+			if (*vocationName == "MAGE") {
+
+				if (castSpells == "Energy Blast") {
+					std::cout << "You put your hands together and suck up all the aether to create a ball of enerfy then launched it the enemy";
+					return attack;
+				}
+
+				if (castSpells == "Magic Shield") {
+					std::cout << "You raise both of your hands and make a shield of energy, blocking an attack";
+					defense = 200;
+					return defense;
+				}
+			}
+	}
+}
+
+int Player::TakeDamage(float damage)
+{
+	damage = damage / defense * 20;
+	health -= damage;
+
+	if (*vocationName == "PALADIN") {
+		defense = 100;
+	}
+	return damage;
 }

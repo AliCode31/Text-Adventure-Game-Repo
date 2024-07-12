@@ -37,9 +37,8 @@ public:
 	void Hud();
 
 	void ChooseName();
-	bool FindSpell(String spell);
-    
-
-
+	bool FindSpell(String* spell);
+	int CastSpell(String castSpell);
+	int TakeDamage(float damage);
 };
 

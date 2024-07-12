@@ -3,13 +3,14 @@
 class DialogueManager 
 {
     Player* playerPtr;
+   
+public:
     String weapon;
     String name;
-public:
 
+public:
     DialogueManager(Player* playerptr);
     ~DialogueManager();
-
 
 public:
 
@@ -17,7 +18,7 @@ public:
     void Prologue(int parts);
     void ChapterOne();
     void IntroToDungeon();
-
+    void AboutToFight();
 
 
 
