@@ -48,12 +48,12 @@ void Game::Run()
 		player->playerVocation->ChooseVocation();
 		player->SetVocation();
 
-	/*	dialogue->Contiunue();
+		dialogue->Contiunue();
 		dialogue->Prologue(1);
 		player->ChooseName();
 		dialogue->Prologue(2);
 		dialogue->ChapterOne();
-		dialogue->IntroToDungeon();*/
+		dialogue->IntroToDungeon();
 		Dungeon(); 
 		gameIsRun = false;
 	}
@@ -64,6 +64,7 @@ void Game::Run()
 
 void Game::Dungeon()
 {
+	//WIP
 	bool done = false;
 	int roomIndex = 0;
 	String compass;
@@ -80,7 +81,7 @@ void Game::Dungeon()
 			player->Hud();
 			rooms[roomIndex]->Description();
 
-			std::cout << "-[Move North]\n\n";
+			std::cout << "-Move[North]\n\n";
 			std::cout << "Type your direction...";
 			compass.ReadFromConsole();
 
@@ -93,7 +94,7 @@ void Game::Dungeon()
 			player->Hud();
 			rooms[roomIndex]->Description();
 
-			std::cout << "-[Move North]\n-[Move South]\n-[Move West]\n-[Move East]\n";
+			std::cout << "-Move[North]\n-Move[South]\n-Move{West]\n-Move[East]\n";
 			std::cout << "Type your direction...";
 			compass.ReadFromConsole();
 
@@ -118,7 +119,7 @@ void Game::Dungeon()
 			player->Hud();
 			rooms[roomIndex]->Description();
 
-			std::cout << "-[Move East]\n\n";
+			std::cout << "-Move[East]\n\n";
 			std::cout << "1 [Open Chest]\n\n";
 			if (chestKey->onPlayer) {
 				std::cout << "2 [Use Key]\n\n";
@@ -145,9 +146,9 @@ void Game::Dungeon()
 			if (!kobold->KoboldIsDead()) {
 				std::cout << "You then find out why everything is destroyed, because at the corner\nis a creature you haven't scene in ages... A Kobold\n\n";
 			}
-			else std::cout << "You see the kobold dead on the ground\n\n";
+			else std::cout << "You see the kobold dead on the ground\n\nTHIS IS HOW FAR THE GAME HOW BEEN MADE IN]\n\n";
 
-			std::cout << "-[Move West]\n\n";
+			std::cout << "-Move[West]\n\n";
 
 			std::cout << "1 [Fight]\n\n";
 			std::cout << "Type your direction...";

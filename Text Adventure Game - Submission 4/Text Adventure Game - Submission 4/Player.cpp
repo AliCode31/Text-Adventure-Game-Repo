@@ -289,7 +289,7 @@ int Player::CastSpell(String castSpells)
 
 				if (castSpells == "Energy Blast") {
 					std::cout << "You put your hands together and suck up all the aether to create a ball of enerfy then launched it the enemy";
-					return attack;
+					return magicAttack;
 				}
 
 				if (castSpells == "Magic Shield") {
@@ -298,6 +298,8 @@ int Player::CastSpell(String castSpells)
 					return defense;
 				}
 			}
+
+			//WIP
 	}
 }
 
