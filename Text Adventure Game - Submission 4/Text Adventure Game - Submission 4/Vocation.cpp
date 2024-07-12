@@ -15,7 +15,7 @@ void Vocation::ChooseVocation()
 	String consoleVocation;
 	String consoleYesAndNO;
 	 
-	std::cout << "\n\n\n";
+	std::cout << "\n\n";
 	std::cout << "_________________________________________________________________________________________________________________________________________________\n";
 	std::cout << " [PALADIN]  |\"Paladins are holy knights that stick to the oath and never break it. You swore to uphold justice and be righteous, you protect the/\n____________| people from danger. [you are a beacon of hope] You use a {sword and a shield} and can cast {spells} fuelled by your oath\"        /\n";
 	std::cout << "Health:  100|-------------------------------------------------------------------------------------------------------------------------------- /\nDefense: 100|\nStamina: 50 |\nMana:    50 |\nAttack:  15 |\n------------|\n\n\n";

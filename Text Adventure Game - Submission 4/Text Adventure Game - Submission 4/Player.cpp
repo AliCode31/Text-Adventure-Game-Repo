@@ -84,6 +84,14 @@ Player::~Player()
 	
 }
 
+bool Player::Playerisxdead()
+{
+	if (health < 0) {
+		return true;
+	}
+	return false;
+}
+
 void Player::SetVocation()
 {
 	vocationName = &playerVocation->vocationName;
@@ -100,6 +108,39 @@ void Player::SetVocation()
 
 	//Spells
 
+}
+
+void Player::Hud()
+{
+	String paladin = "PALADIN";
+	String warrior = "WARRIOR";
+	String mage = "MAGE";
+
+	if (*vocationName == paladin) {
+		std::cout << "-------------------------------------\n";
+		std::cout << "Health:  " << health << "              " << "Attack: " << attack << " " << std::endl;
+		std::cout << "Defense: " << defense << "               " << std::endl;
+		std::cout << "Stamina: " << stamina << "                 Vocation" << std::endl;
+		std::cout << "Mana: " << mana << "                     " << vocationName->CString() << "" << std::endl;
+		std::cout << "-------------------------------------\n";
+	}
+	if (*vocationName == warrior) {
+		std::cout << "-------------------------------------\n";
+		std::cout << "Health:  " << health << "               " << "Attack: " << attack << " " << std::endl;
+		std::cout << "Defense: " << defense << "               " << std::endl;
+		std::cout << "Stamina: " << stamina << "                 Vocation" << std::endl;
+		std::cout << "                              " << vocationName->CString() << "" << std::endl;
+		std::cout << "-------------------------------------\n";
+	}
+	if (*vocationName == mage) {
+		std::cout << "-------------------------------------\n";
+		std::cout << "Health:  " << health << "             " << "MAttack: " << magicAttack << " " << std::endl;
+		std::cout << "Defense: " << defense << "               " << std::endl;
+		std::cout << "mana: " << mana << "                    Vocation" << std::endl;
+		std::cout << "                                 " << vocationName->CString() << "" << std::endl;
+		std::cout << "-------------------------------------\n";
+	}
+	
 }
 
 void Player::ChooseName()

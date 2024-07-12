@@ -1,76 +1,11 @@
 #include <iostream>
-#include "String.h"
-#include "player.h"
-#include "DialogueManager.h"
+#include "Game.h"
 
 int main()
 {
-  
-	Player* player = new Player() ;
-	DialogueManager dialogue(player);
+	Game game;
 
-	/*player->ChooseName();*/
-	//player->playerVocation->ChooseVocation();
-
-	player->SetVocation();
-
-	
-
-	
-
-
-	if (player->FindSpell("Heal")) {
-		std::cout << "It has been found";
-	}
-	else std::cout << "You don't have that spell";
-
-
-
-
-
-	/*dialogue.Contiunue();
-	dialogue.Prologue(1);
-	player->ChooseName();
-	dialogue.Prologue(2);*/
-
-
-
+	game.Run();
 	system("pause");
-
-	delete player;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
 

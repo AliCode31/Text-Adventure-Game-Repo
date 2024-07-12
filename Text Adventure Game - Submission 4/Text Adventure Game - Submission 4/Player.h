@@ -32,11 +32,13 @@ public:
    ~Player();
 
 public:
-
+	bool Playerisxdead();
 	void SetVocation();
+	void Hud();
+
 	void ChooseName();
 	bool FindSpell(String spell);
-     
+    
 
 
 };

@@ -108,6 +108,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>Winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -127,16 +128,28 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ChestKey.cpp" />
+    <ClCompile Include="CorridorKey.cpp" />
+    <ClCompile Include="Crystal.cpp" />
     <ClCompile Include="DialogueManager.cpp" />
+    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Item.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Room.cpp" />
     <ClCompile Include="String.cpp" />
     <ClCompile Include="Text Adventure Game - Submission 4.cpp" />
     <ClCompile Include="Vocation.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ChestKey.h" />
+    <ClInclude Include="CorridorKey.h" />
+    <ClInclude Include="Crystal.h" />
     <ClInclude Include="DialogueManager.h" />
+    <ClInclude Include="Game.h" />
+    <ClInclude Include="Item.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="Room.h" />
     <ClInclude Include="String.h" />
     <ClInclude Include="Vocation.h" />
   </ItemGroup>

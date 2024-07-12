@@ -6,6 +6,7 @@ class DialogueManager
     String weapon;
     String name;
 public:
+
     DialogueManager(Player* playerptr);
     ~DialogueManager();
 
@@ -14,8 +15,8 @@ public:
 
     void Contiunue();
     void Prologue(int parts);
-
-    
+    void ChapterOne();
+    void IntroToDungeon();
 
 
 
