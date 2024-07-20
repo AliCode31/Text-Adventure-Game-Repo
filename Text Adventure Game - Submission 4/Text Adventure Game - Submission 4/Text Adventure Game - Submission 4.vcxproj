@@ -147,6 +147,7 @@
     <ClInclude Include="Crystal.h" />
     <ClInclude Include="DialogueManager.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="Goblin.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="Kobold.h" />
     <ClInclude Include="Player.h" />

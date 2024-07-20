@@ -5,6 +5,10 @@
 #pragma once
 class Player
 {
+	bool paladinBuff = false;
+	bool warriiorBuff = false;
+	bool mageBuff = false;
+	int countdown = 4;
 public:
 
 	String playerName;
@@ -22,7 +26,7 @@ private:
 	int stamina;
 	int mana;
 	int spellsLength;
-	String spells[10];
+	String spells[11];
 	
 	
 public: 
@@ -40,5 +44,6 @@ public:
 	bool FindSpell(String* spell);
 	int CastSpell(String castSpell);
 	int TakeDamage(float damage);
+	void Buffs();
 };
 

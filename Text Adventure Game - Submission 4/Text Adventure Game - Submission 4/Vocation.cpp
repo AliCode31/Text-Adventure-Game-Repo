@@ -26,7 +26,7 @@ void Vocation::ChooseVocation()
 
 	std::cout << "______________________________________________________________________________________________________________________________________________\n";
 	std::cout << "   [MAGE]   |\"Mages have studied for a long time in the supernatural, they have a lot of knowledge on different creatures potion making, and |\n____________| magical prowess on spellcasting with their {grimoire}, Anything nature related that can disturb the supernatural. Basically    |\n";
-	std::cout << "Health:  100|[A person seeking knowledge to break the limits of what a human can do]\" /-------------------------------------------------------\nDefense: 50 |------------------------------------------------------------------------/\nMana: 100   |\nMAttack: 15 |\n------------|\n\n\n\n";
+	std::cout << "Health:  100|[A person seeking knowledge to break the limits of what a human can do]\" /-------------------------------------------------------\nDefense: 50 |------------------------------------------------------------------------/\nMana: 100   |\nMAttack: 50 |\n------------|\n\n\n\n";
 
 	
 

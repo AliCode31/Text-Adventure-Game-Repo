@@ -89,6 +89,9 @@
     <ClInclude Include="Kobold.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Goblin.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Text Adventure Game - Submission 4.rc">

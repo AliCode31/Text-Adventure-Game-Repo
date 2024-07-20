@@ -6,6 +6,7 @@
 #include "CorridorKey.h"
 #include "Crystal.h"
 #include "Kobold.h"
+#include "Goblin.h"
 class Game
 {
 private: 
@@ -15,6 +16,8 @@ private:
 	Crystal* crystal;
 
 	Kobold* kobold;
+	Goblin* goblins[2];
+
 
 	bool gameIsRun;
 
@@ -29,6 +32,6 @@ public:
 	void Run();
 	void Dungeon();
 	void FightKobold();
-
+	void FightGoblin();
 };
 

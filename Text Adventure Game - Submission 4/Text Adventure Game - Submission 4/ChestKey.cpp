@@ -7,5 +7,9 @@ void ChestKey::Description() const
 
 void ChestKey::Use()
 {
-	std::cout << "You used the key on the chest";
+	if (!used) {
+		std::cout << "You used the key";
+		used = true;
+	} else std::cout << "You already used the key";
+	
 }

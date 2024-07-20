@@ -2,6 +2,8 @@
 #include "Vocation.h"
 #include <iostream>
 #include <algorithm>
+#include <tchar.h>
+#include <Windows.h>
 Player::Player() 
 {
 	playerName = "You";
@@ -25,7 +27,7 @@ Player::Player()
 	
 
 
-	spellsLength = 10;
+	spellsLength = 11;
 	for (int i = 0; i < spellsLength; i++) {
 		if (i == 0) {
 			spells[i] = "Swing";
@@ -64,6 +66,10 @@ Player::Player()
 		}
 
 		if (i == 9) {
+			spells[i] = "Clemency";
+		}
+
+		if (i == 10) {
 			spells[i] = "Concentrate";
 		}
 
@@ -262,8 +268,13 @@ int Player::CastSpell(String castSpells)
 		if (*vocationName == "PALADIN") {
 
 			if (castSpells == "Swing") {
-				std::cout << "You swing your sword";
-				return attack;
+				if (stamina > 0) {
+					std::cout << "You swing your sword";
+					stamina -= 2;
+					return attack;
+				}
+				else { std::cout << "Your to tired to swing your sword"; return 0; }
+
 			}
 
 			if (castSpells == "Block") {
@@ -271,35 +282,105 @@ int Player::CastSpell(String castSpells)
 				defense = 200;
 				return defense;
 			}
-		}
-			if (*vocationName == "WARRIOR") {
+			if (castSpells == "Clemency") {
+				if (mana > 0) {
+					std::cout << "You raise your sword high in the sky and channel your oath to heal any wounds on you";
+					mana -= 5;
+					health += 45;
+				}
+				else { std::cout << "You have no mana left"; return 0; }
+				if (health > 100) {
+					health = 100;
+				}
+				return health;
+			}
+			if (castSpells == "Blade of Faith") {
+				if (mana > 0) {
+					std::cout << "You pierce your sword to the ground channeling your oath to succeed, you feel stronger";
+					attack *= 3;
+					mana -= 5;
+					paladinBuff = true;
+					return defense;
 
-				if (castSpells == "Swing") {
+				}
+				else { std::cout << "You have no mana left"; return 0; }
+			}
+			if (castSpells == "Blade of Truth") {
+
+				if (mana > 0) {
+					std::cout << "You plunge your sword to the ground and let go of your shield, you close your eyes and start channeling your oath, swords around you start to summon.\nYou then open your eyes and lift your sword to point it at the enemy, the swords around you fly past and stab the enemy dealing a lot of damage";
+					mana -= 5;
+					int newDamage = attack * 5;
+					return newDamage;
+				}
+				else {
+					std::cout << "You have no mana left";
+					return 0;
+				}
+			}
+
+
+		}
+		if (*vocationName == "WARRIOR") {
+
+			if (castSpells == "Swing") {
+				if (stamina > 0) {
 					std::cout << "You swing your Axe";
+					stamina -= 2;
 					return attack;
 				}
-
-				if (castSpells == "block") {
-					std::cout << "You block with your axe";
-					defense = 200;
-					return defense;
-				}
-			}
-			if (*vocationName == "MAGE") {
-
-				if (castSpells == "Energy Blast") {
-					std::cout << "You put your hands together and suck up all the aether to create a ball of enerfy then launched it the enemy";
-					return magicAttack;
-				}
-
-				if (castSpells == "Magic Shield") {
-					std::cout << "You raise both of your hands and make a shield of energy, blocking an attack";
-					defense = 200;
-					return defense;
-				}
+				else { std::cout << "Your to tired to swing your axer"; return 0; }
 			}
 
-			//WIP
+			if (castSpells == "Block") {
+				std::cout << "You block with your axe";
+				defense = 200;
+				return defense;
+			}
+			if (castSpells == "Whirlwind") {
+				std::cout << "You start to spin around with your axe out attacking whoever goes near it";
+				int newDamage = attack * 5;
+				return newDamage;
+			}
+			if (castSpells == "Bloodlust") {
+				std::cout << "You start to smile and laugh at the enemy, you lower your axe and get in a trance. A red aura around you starts to appear. You have the urge to kill anything in your way";
+				warriiorBuff = true;
+				return 0;
+			}
+		}
+		if (*vocationName == "MAGE") {
+
+			if (castSpells == "Energy Blast") {
+				std::cout << "You put your hands together and suck up all the aether to create a ball of enerfy then launched it the enemy";
+				return magicAttack;
+			}
+
+			if (castSpells == "Magic Shield") {
+				std::cout << "You raise both of your hands and make a shield of energy, blocking an attack";
+				defense = 200;
+				return defense;
+			}
+			if (castSpells == "Heal") {
+				if (mana > 0) {
+					std::cout << "You open your grimoire and recite one of the pages, your whole body is surrounded in blue aura. You then feel your wounds go away";
+					mana -= 5;
+					health += 45;
+				}
+				else { std::cout << "You have no mana left"; return 0; }
+			}
+			if (castSpells == "Concentrate") {
+				if (mana > 0) {
+					std::cout << "You open your grimoire and recite two pages in the book out loud, a white Aura around you starts to form. You feel more focused ";
+					mana -= 5;
+					mageBuff = true;
+				}
+				else { std::cout << "You have no mana left"; return 0; }
+			}
+
+
+
+
+		}
 	}
 }
 
@@ -311,5 +392,62 @@ int Player::TakeDamage(float damage)
 	if (*vocationName == "PALADIN") {
 		defense = 100;
 	}
+	if (*vocationName == "WARRIOR") {
+		defense = 80;
+	}
+	if (*vocationName == "MAGE") {
+		defense = 50;
+	}
+	std::cout << "\n    You take " << damage << " damage\n\n";
+	PlaySound(_T("PlayerHurt.wav"), NULL, SND_ASYNC);
 	return damage;
+}
+
+void Player::Buffs()
+{
+;
+	if (paladinBuff) {
+		countdown-=1;
+		if (countdown > 0) {
+			std::cout << "\n\nYou have " << countdown << " of buff left\n\n";
+		}
+		if (countdown == 0) {
+			std::cout << "\n\nYour buff has ran out\n\n";
+			attack /= 3;
+			countdown = 4;
+			paladinBuff = false;
+		}
+	}
+	if (warriiorBuff) {
+		countdown -= 1;
+		stamina = 100;
+		attack * 5;
+		if (countdown > 0) {
+			health += 50;
+			std::cout << "\n\n\You start to soak in the blood of your enemy, you recover from your battle wounds\n";
+			std::cout << "You have " << countdown << " of buff left\n\n";
+		}
+		if (countdown == 0) {
+			std::cout << "\n\nYour buff has ran out\n\n";
+			attack /= 5;
+			countdown = 4;
+			warriiorBuff = false;
+		}
+	}
+	if (mageBuff) {
+		countdown -= 1;
+		attack * 5;
+		if (countdown > 0) {
+			std::cout << "\n\n You have " << countdown << " of buff left\n\n";
+		}
+		if (countdown == 0) {
+			std::cout << "\n\nYour buff has ran out\n\n";
+			attack /= 5;
+			countdown = 4;
+			mageBuff = false;
+		}
+	}
+
+
+
 }

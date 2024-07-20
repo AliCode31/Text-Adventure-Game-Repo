@@ -213,7 +213,7 @@ void DialogueManager::ChapterOne()
 			dialogue.Replace("name", name);
 		}
 		if (dialogueNumber == 10) {
-			dialogue = "[Reiner] \"That's the thing, we can'\"";
+			dialogue = "[Reiner] \"That's the thing, we can't\"";
 		}
 		if (dialogueNumber == 11) {
 			dialogue = "[name] \"Why?\"\n";
@@ -280,7 +280,7 @@ void DialogueManager::IntroToDungeon()
 
 	while (dialogueNumber != 3) {
 		if (dialogueNumber == 1) {
-			dialogue = "You walk to the entrance to the dungeon preparing for what's to come {Weapontype} in your hand you step in\n";
+			dialogue = "You walk to the entrance to the dungeon preparing for what's to come, {Weapontype} in your hand you step in\n";
 			dialogue.Replace("{Weapontype}", weapon.Lowercase());
 		}
 		if (dialogueNumber == 2) {
