@@ -2,7 +2,7 @@
 
 void ChestKey::Description() const
 {
-	std::cout << "A key that looks like it can open a something...";
+	std::cout << "A key that looks like it can open something...";
 }
 
 void ChestKey::Use()

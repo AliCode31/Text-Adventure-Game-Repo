@@ -299,21 +299,171 @@ void DialogueManager::IntroToDungeon()
 	}
 }
 
-void DialogueManager::AboutToFight()
+void DialogueManager::AboutToFightKobold()
 {
 	
  	String dialogue = "\nYou pull at your {Weapontype}, and charge right at the Kobold";
 	dialogue.Replace("{Weapontype}", weapon); //weapon.Lowercase());
 
+	std::cout << dialogue.CString();
+	Contiunue();
+}
 
+void DialogueManager::AboutToFightGoblins()
+{
 
-
-
-
-
-
-
+	String dialogue = "\nYou pull at your {Weapontype}, and charge right at the Goblins";
+	dialogue.Replace("{Weapontype}", weapon); //weapon.Lowercase());
 
 	std::cout << dialogue.CString();
 	Contiunue();
+}
+void DialogueManager::AboutToFightOrc()
+{
+
+	String dialogue = "\nYou pull at your {Weapontype}, and charge right at the Orc";
+	dialogue.Replace("{Weapontype}", weapon); //weapon.Lowercase());
+
+	std::cout << dialogue.CString();
+	Contiunue();
+}
+void DialogueManager::FinalBossIsDead()
+{
+	system("cls");
+	int dialogueNumber = 1;
+	String dialogue;
+
+
+	while (dialogueNumber != 6) {
+		if (dialogueNumber == 1) {
+			dialogue = "You finally kill it, the Chimera drops dead on the ground\n";
+		}
+		if (dialogueNumber == 2) {
+			dialogue = "You stuggle to stand with the amount of fatigue you have, your breathing fast paced\n";
+		}
+		if (dialogueNumber == 3) {
+			dialogue = "You see the Chest that Reiner was talking about and go up to it\n";
+		}
+		if (dialogueNumber == 4) {
+			dialogue = "You then open it....\n";
+		}
+		if (dialogueNumber == 5) {
+			dialogue = "You then become massively shocked on what's in there, what the ancients have been hiding\n";
+		}
+
+		for (int i = 0; dialogue[i] != '\0'; i++) {
+
+			std::cout << dialogue[i];
+			Sleep(15);
+			PlaySound(_T("Typewriter.wav"), NULL, SND_ASYNC);
+		}
+		Contiunue();
+		dialogueNumber++;
+	}
+}
+void DialogueManager::BossStageTwo()
+{
+	int dialogueNumber = 1;
+	String dialogue;
+
+
+	while (dialogueNumber != 2) {
+
+		if (dialogueNumber == 1) {
+			if (*playerPtr->vocationName == "PALADIN") {
+				 dialogue = "You sliced of the Chimera's tail, Snake flying of. You see the lion and Goat still alive but the Chimera is still strong\n";
+			}
+			else if (*playerPtr->vocationName == "WARRIOR") {
+				 dialogue = "You chopped of the Chimera's tail, Snake flying of. You see the lion and Goat still alive but the Chimera is still strong\n";
+
+			}
+			else if (*playerPtr->vocationName == "MAGE") {
+				 dialogue = "You blown of the Chimera's tail, Snake flying of. You see the lion and Goat still alive but the Chimera is still strong\n";
+				 dialogue.Replace("{Weapontype}", weapon.Lowercase());
+			} 
+		}
+
+		for (int i = 0; dialogue[i] != '\0'; i++) {
+
+			std::cout << dialogue[i];
+			Sleep(15);
+			PlaySound(_T("Typewriter.wav"), NULL, SND_ASYNC);
+		}
+		Contiunue();
+		dialogueNumber++;
+	}
+}
+void DialogueManager::BossStageThird()
+{
+	int dialogueNumber = 1;
+	String dialogue;
+
+	while (dialogueNumber != 3) {
+	
+		if (dialogueNumber == 1) {
+			if (*playerPtr->vocationName == "PALADIN") {
+				 dialogue = "You sliced of the Goat's head, Goats head fallen to the ground. With the Snake and Goat dead, its only the Lion left\nYou clench your {Weapontype} more firm\n";
+				 dialogue.Replace("{Weapontype}", weapon.Lowercase());
+			}
+			else if (*playerPtr->vocationName == "WARRIOR") {
+				 dialogue = "You chopped of the Goat's head, Goats head fallen to the ground. With the Snake and Goat dead, its only the Lion left\nYou clench your {Weapontype} more firm\n";
+				 dialogue.Replace("{Weapontype}", weapon.Lowercase());
+			}
+			else if (*playerPtr->vocationName == "MAGE") {
+				 dialogue = "You Blown of the Goat's head, Goats head fallen to the ground. With the Snake and Goat dead, its only the Lion left\nYou clench your {Weapontype} more firm\n";
+				 dialogue.Replace("{Weapontype}", weapon.Lowercase());
+			}
+		}
+		if (dialogueNumber == 2) {
+			dialogue = "[name] \"Why are you so stubborn...JUST DIE!\"\n";
+			dialogue.Replace("name", name);
+		}
+
+		for (int i = 0; dialogue[i] != '\0'; i++) {
+
+			std::cout << dialogue[i];
+			Sleep(15);
+			PlaySound(_T("Typewriter.wav"), NULL, SND_ASYNC);
+		}
+		Contiunue();
+		dialogueNumber++;
+	}
+}
+void DialogueManager::AboutToFightBossStageOne()
+{
+	system("cls");
+	int dialogueNumber = 1;
+	String dialogue;
+
+
+	while (dialogueNumber != 7) {
+		if (dialogueNumber == 1) {
+			dialogue = "You open the big doors and walk into this big room. Pitch black, not being able to see nothing\n";
+		}
+		if (dialogueNumber == 2) {
+			dialogue = "Then suddenly the lights turn on in the room and you see it...\n";
+		}
+		if (dialogueNumber == 3) {
+			dialogue = "What Reiner was telling you about, what you fought in the war years ago, The Red Chimera\n";
+		}
+		if (dialogueNumber == 4) {
+			dialogue = "A Lion as the base of the body with a Goat head sticking out and with the tail as a Snake, with the Snake head at the end of the tail\ngetting ready to bite\n";
+		}
+		if (dialogueNumber == 5) {
+			dialogue = "You know what you gotta do..\n";
+		}
+		if (dialogueNumber == 6) {
+			dialogue = "[name] \"We meet again...\"\n";
+			dialogue.Replace("name", name);
+		}
+
+		for (int i = 0; dialogue[i] != '\0'; i++) {
+
+			std::cout << dialogue[i];
+			Sleep(15);
+			PlaySound(_T("Typewriter.wav"), NULL, SND_ASYNC);
+		}
+		Contiunue();
+		dialogueNumber++;
+	}
 }

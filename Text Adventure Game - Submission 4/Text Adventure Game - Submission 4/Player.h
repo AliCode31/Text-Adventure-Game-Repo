@@ -16,6 +16,7 @@ public:
 	String* vocationName;
 	Vocation* playerVocation;
 	
+	
 private:
 	int health;
 	int defense;

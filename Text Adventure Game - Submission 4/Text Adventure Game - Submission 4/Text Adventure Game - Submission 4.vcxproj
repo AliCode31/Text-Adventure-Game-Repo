@@ -136,6 +136,7 @@
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="Kobold.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="RedChimera.cpp" />
     <ClCompile Include="Room.cpp" />
     <ClCompile Include="String.cpp" />
     <ClCompile Include="Text Adventure Game - Submission 4.cpp" />
@@ -150,7 +151,9 @@
     <ClInclude Include="Goblin.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="Kobold.h" />
+    <ClInclude Include="Orc.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="RedChimera.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Room.h" />
     <ClInclude Include="String.h" />

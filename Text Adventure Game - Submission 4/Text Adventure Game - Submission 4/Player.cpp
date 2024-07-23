@@ -92,7 +92,7 @@ Player::~Player()
 
 bool Player::Playerisxdead()
 {
-	if (health < 0) {
+	if (health <= 0) {
 		return true;
 	}
 	return false;
@@ -285,33 +285,39 @@ int Player::CastSpell(String castSpells)
 			if (castSpells == "Clemency") {
 				if (mana > 0) {
 					std::cout << "You raise your sword high in the sky and channel your oath to heal any wounds on you";
-					mana -= 5;
-					health += 45;
+					mana -= 1;
+					health += 100;
+					PlaySound(_T("Power.wav"), NULL, SND_ASYNC);
 				}
 				else { std::cout << "You have no mana left"; return 0; }
-				if (health > 100) {
-					health = 100;
+				if (health > 130) {
+					health = 120;
 				}
 				return health;
 			}
 			if (castSpells == "Blade of Faith") {
-				if (mana > 0) {
-					std::cout << "You pierce your sword to the ground channeling your oath to succeed, you feel stronger";
-					attack *= 3;
-					mana -= 5;
-					paladinBuff = true;
-					return defense;
+				if (paladinBuff) {std::cout <<"Buff already active!"; }	
+				else {
+					if (mana > 0) {
+						std::cout << "You pierce your sword to the ground channeling your oath to succeed, you feel stronger";
+						attack = 135;
+						mana -= 1;
+						paladinBuff = true;
+						PlaySound(_T("Power.wav"), NULL, SND_ASYNC);
 
+						return defense;
+					}
+					else { std::cout << "You have no mana left"; return 0; }
 				}
-				else { std::cout << "You have no mana left"; return 0; }
 			}
 			if (castSpells == "Blade of Truth") {
 
 				if (mana > 0) {
 					std::cout << "You plunge your sword to the ground and let go of your shield, you close your eyes and start channeling your oath, swords around you start to summon.\nYou then open your eyes and lift your sword to point it at the enemy, the swords around you fly past and stab the enemy dealing a lot of damage";
-					mana -= 5;
+					mana -= 1;
 					int newDamage = attack * 5;
 					return newDamage;
+
 				}
 				else {
 					std::cout << "You have no mana left";
@@ -338,14 +344,26 @@ int Player::CastSpell(String castSpells)
 				return defense;
 			}
 			if (castSpells == "Whirlwind") {
-				std::cout << "You start to spin around with your axe out attacking whoever goes near it";
-				int newDamage = attack * 5;
-				return newDamage;
+				if (stamina > 0) {
+					std::cout << "You start to spin around with your axe out attacking whoever goes near it";
+					int newDamage = attack * 5;
+					stamina -= 2;
+					return newDamage;
+				}
+				else { std::cout << "You are to tired!"; return 0; }
 			}
 			if (castSpells == "Bloodlust") {
-				std::cout << "You start to smile and laugh at the enemy, you lower your axe and get in a trance. A red aura around you starts to appear. You have the urge to kill anything in your way";
-				warriiorBuff = true;
-				return 0;
+				if (warriiorBuff) { std::cout << "Buff already active!"; }
+				else {
+					if (stamina > 0) {
+						stamina -= 5;
+						std::cout << "You start to smile and laugh at the enemy, you lower your axe and get in a trance. A red aura around you starts to appear. You have the urge to kill anything in your way";
+						warriiorBuff = true;
+						PlaySound(_T("Power.wav"), NULL, SND_ASYNC);
+					}
+					else { std::cout << "Your are to tried!"; }
+					return 0;
+				}
 			}
 		}
 		if (*vocationName == "MAGE") {
@@ -358,28 +376,30 @@ int Player::CastSpell(String castSpells)
 			if (castSpells == "Magic Shield") {
 				std::cout << "You raise both of your hands and make a shield of energy, blocking an attack";
 				defense = 200;
+				PlaySound(_T("Power.wav"), NULL, SND_ASYNC);
 				return defense;
 			}
 			if (castSpells == "Heal") {
 				if (mana > 0) {
 					std::cout << "You open your grimoire and recite one of the pages, your whole body is surrounded in blue aura. You then feel your wounds go away";
-					mana -= 5;
-					health += 45;
+					mana -= 2;
+					health += 120;
+					PlaySound(_T("Power.wav"), NULL, SND_ASYNC);
 				}
 				else { std::cout << "You have no mana left"; return 0; }
 			}
 			if (castSpells == "Concentrate") {
-				if (mana > 0) {
-					std::cout << "You open your grimoire and recite two pages in the book out loud, a white Aura around you starts to form. You feel more focused ";
-					mana -= 5;
-					mageBuff = true;
+				if (mageBuff) { std::cout << "Buff already active!"; }
+				else {
+					if (mana > 0) {
+						std::cout << "You open your grimoire and recite two pages in the book out loud, a white Aura around you starts to form. You feel more focused ";
+						mana -= 5;
+						mageBuff = true;
+						PlaySound(_T("Power.wav"), NULL, SND_ASYNC);
+					}
+					else { std::cout << "You have no mana left"; return 0; }
 				}
-				else { std::cout << "You have no mana left"; return 0; }
 			}
-
-
-
-
 		}
 	}
 }
@@ -400,11 +420,17 @@ int Player::TakeDamage(float damage)
 	}
 	std::cout << "\n    You take " << damage << " damage\n\n";
 	PlaySound(_T("PlayerHurt.wav"), NULL, SND_ASYNC);
+	if (health <= 0) {
+		health = 0;
+		std::cout << "\n    You are at " << health << " health\n\n";
+	}
+
+		
 	return damage;
 }
 
 void Player::Buffs()
-{
+{ 
 ;
 	if (paladinBuff) {
 		countdown-=1;
@@ -413,7 +439,7 @@ void Player::Buffs()
 		}
 		if (countdown == 0) {
 			std::cout << "\n\nYour buff has ran out\n\n";
-			attack /= 3;
+			attack = 15;
 			countdown = 4;
 			paladinBuff = false;
 		}
@@ -421,28 +447,28 @@ void Player::Buffs()
 	if (warriiorBuff) {
 		countdown -= 1;
 		stamina = 100;
-		attack * 5;
+		attack = 150;
 		if (countdown > 0) {
 			health += 50;
 			std::cout << "\n\n\You start to soak in the blood of your enemy, you recover from your battle wounds\n";
-			std::cout << "You have " << countdown << " of buff left\n\n";
+			std::cout << "      You have " << countdown << " of buff left\n\n";
 		}
 		if (countdown == 0) {
 			std::cout << "\n\nYour buff has ran out\n\n";
-			attack /= 5;
+			attack = 30;
 			countdown = 4;
 			warriiorBuff = false;
 		}
 	}
 	if (mageBuff) {
 		countdown -= 1;
-		attack * 5;
+		magicAttack = 500;
 		if (countdown > 0) {
 			std::cout << "\n\n You have " << countdown << " of buff left\n\n";
 		}
 		if (countdown == 0) {
 			std::cout << "\n\nYour buff has ran out\n\n";
-			attack /= 5;
+			magicAttack = 50;;
 			countdown = 4;
 			mageBuff = false;
 		}

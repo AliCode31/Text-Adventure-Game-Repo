@@ -18,9 +18,13 @@ public:
     void Prologue(int parts);
     void ChapterOne();
     void IntroToDungeon();
-    void AboutToFight();
-
-
+    void AboutToFightKobold();
+    void AboutToFightGoblins();
+    void AboutToFightOrc();
+    void AboutToFightBossStageOne();
+    void BossStageTwo();
+    void BossStageThird();
+    void FinalBossIsDead();
 
 };
 

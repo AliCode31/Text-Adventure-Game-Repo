@@ -7,6 +7,8 @@
 #include "Crystal.h"
 #include "Kobold.h"
 #include "Goblin.h"
+#include "Orc.h"
+#include "RedChimera.h"
 class Game
 {
 private: 
@@ -17,6 +19,8 @@ private:
 
 	Kobold* kobold;
 	Goblin* goblins[2];
+	Orc* orc;
+	RedChimera* redChimera;
 
 
 	bool gameIsRun;
@@ -33,5 +37,7 @@ public:
 	void Dungeon();
 	void FightKobold();
 	void FightGoblin();
+	void FightOrc();
+	void FightRedChimera();
 };
 
